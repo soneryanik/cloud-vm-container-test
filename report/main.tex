@@ -230,7 +230,7 @@ The \texttt{/compute} gap of 2.6 times was larger than the literature suggests f
 
 \subsection{Cost Results}
 
-The actual cost of all experiments was \textbf{0~USD}: everything ran on my own laptop, no cloud account was used, and the only resources created were local and were deleted afterwards (Section~\ref{sec:conclusion}).
+The actual cost of all experiments was \textbf{0~USD}: everything ran on my own laptop and no cloud account was used, so no billable resources were ever created (Section~\ref{sec:conclusion}).
 
 To translate the measurements into cloud cost, I modelled a team that must run eight small, isolated API services (for example one per customer). Prices are Azure pay-as-you-go Linux prices for the Germany West Central region, read from the Azure Retail Prices API~\cite{azureprices} on 22 November 2026, with 730 hours per month; disks, traffic and support are excluded. \emph{Option VM:} one B2s VM (2 vCPU, 4 GiB) per service, \$0.048/h. \emph{Option container:} all eight services as containers on one D4s\_v5 VM (4 vCPU, 16 GiB), \$0.23/h. Measured memory makes this feasible: eight containers need about 8~$\times$~49~MiB~$\approx$~0.4~GiB plus the host OS. Table~\ref{tab:cost} shows that the container option is about 40\% cheaper. Memory alone would allow far denser packing: with 14~GiB usable, about six 2~GiB VMs but roughly 290 containers of 49~MiB would fit, so CPU, not memory, becomes the limit for containers.
 
@@ -283,7 +283,7 @@ For the same Flask API with the same 2~vCPU and 2~GB limits, the container start
 
 The main lesson I learned is that the environment around a hypervisor can dominate its performance: the nested Hyper-V setup, not virtualization itself, produced the largest penalties. With more time I would repeat the experiment on a Linux host with KVM and on a cloud VM, measure scale-out in a real autoscaling group, test a sandboxed runtime such as gVisor or a microVM such as Firecracker, and run longer tests.
 
-All resources were removed after the measurements: the VirtualBox VM and its disk, the cloud image, the seed ISO and both container images were deleted, so no cost or exposure remains.
+No cloud account was used, so no billable resources exist. The local VM, its disk and the container images are kept until the project has been evaluated, so that any measurement can be repeated on request, and are deleted afterwards with the cleanup commands in the repository. The VM accepts only key-based SSH on the loopback address, so keeping it creates no exposure.
 
 \section*{AI Tool Use and Originality Declaration}
 \label{sec:ai_declaration}
@@ -364,6 +364,49 @@ try:
 except TimeoutError:   # boot hung
     t_ready, status = "", "hang"
     vm_hard_off()
+\end{lstlisting}
+
+\section{Deployment Evidence}
+\label{app:evidence}
+
+Fig.~\ref{fig:evidence} shows two console screenshots of the VM taken with \texttt{VBoxManage controlvm screenshotpng}: a successful boot reaching the login prompt, and one of the hung boots, stopped after the network driver initialised. Listing~\ref{lst:cli} shows command-line output from the measurement run, the VirtualBox log and the running guest.
+
+\begin{figure*}[t]
+	\centering
+	\begin{minipage}[b]{0.3\textwidth}\centering
+		\includegraphics[width=\linewidth]{figures/vm_console_login_crop.png}\\[2pt]
+		{\footnotesize (a) successful boot}
+	\end{minipage}\hfill
+	\begin{minipage}[b]{0.66\textwidth}\centering
+		\includegraphics[width=\linewidth]{figures/vm_console_boot_hang_crop.png}\\[2pt]
+		{\footnotesize (b) hung boot: the last kernel messages before the stop}
+	\end{minipage}
+	\caption{VM console screenshots (cropped). (a) Successful boot to the login prompt. (b) One of the hung boots; the kernel stopped at about 5.8~s after the network driver initialised.}
+	\label{fig:evidence}
+\end{figure*}
+
+\begin{lstlisting}[language={}, numbers=none, basicstyle=\ttfamily\scriptsize, caption={Command-line output (excerpts; column spacing condensed to fit)}, label={lst:cli}]
+# run_benchmarks.py (results/benchmark_log.txt)
+[14:04:44] 2) startup time: vm x5
+[14:06:57]    attempt 1: hang
+[14:11:56]    attempt 4: ok, ready after 28.43 s
+[14:33:29] summary
+  container startup    0.51 s +- 0.18
+  vm        startup   29.97 s +- 1.71
+
+# VirtualBox log (VBox.log)
+00:00:01.196216 HM: HMR3Init: Attempting fall back to NEM: VT-x is not available
+
+# inside the VM (ssh sen421@127.0.0.1 -p 2222)
+  Virtualization: oracle
+Operating System: Ubuntu 22.04.5 LTS
+          Kernel: Linux 5.15.0-203-generic
+{"cpus":2,"host":"sen421-vm","kernel":"5.15.0-203-generic","python":"3.10.12"}
+
+# docker images sen421-api
+IMAGE            ID           DISK USAGE CONTENT SIZE
+sen421-api:1.0   5d61232445ab      202MB       49.2MB
+sen421-api:jammy 4e50b56b80f1      208MB       51.3MB
 \end{lstlisting}
 
 \end{document}
