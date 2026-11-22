@@ -1,0 +1,13 @@
+# Large VM artifacts never go to git
+*.vdi
+*.vmdk
+*.ova
+*.iso
+*.img
+vm/disks/
+__pycache__/
+.venv/
+# secrets
+*.pem
+*.key
+.env

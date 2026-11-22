@@ -1,0 +1,14 @@
+# Control image: same userland as the VM (Ubuntu 22.04, Python 3.10.12,
+# OpenSSL 3.0.2) so that only the virtualization layer differs.
+FROM ubuntu:22.04
+
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends python3-venv \
+ && rm -rf /var/lib/apt/lists/*
+WORKDIR /opt/app
+COPY requirements.txt .
+RUN python3 -m venv venv && venv/bin/pip install --no-cache-dir -r requirements.txt
+COPY app.py .
+
+EXPOSE 8000
+CMD ["/opt/app/venv/bin/gunicorn", "--workers", "2", "--bind", "0.0.0.0:8000", "app:app"]

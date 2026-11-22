@@ -1,0 +1,29 @@
+﻿[14:50:09] 2) startup time: container x5
+[14:50:12]    attempt 1: ok, ready after 0.39 s
+[14:50:14]    attempt 2: ok, ready after 0.35 s
+[14:50:17]    attempt 3: ok, ready after 0.40 s
+[14:50:20]    attempt 4: ok, ready after 0.37 s
+[14:50:23]    attempt 5: ok, ready after 0.38 s
+[14:50:56] container-jammy 50 VUs /hello (warm-up)
+[14:51:37]    run 1: 1867.3 req/s, p95 37.93 ms, err 0.000
+[14:52:17]    run 2: 1937.5 req/s, p95 30.6 ms, err 0.000
+[14:52:58]    run 3: 2060.8 req/s, p95 31.45 ms, err 0.000
+[14:53:08] container-jammy 50 VUs /compute (warm-up)
+[14:53:49]    run 1: 235.5 req/s, p95 222.1 ms, err 0.000
+[14:54:29]    run 2: 231.0 req/s, p95 237.8 ms, err 0.000
+[14:55:10]    run 3: 243.0 req/s, p95 223.32 ms, err 0.000
+[14:55:21] container-jammy 10 VUs /hello (warm-up)
+[14:56:02]    run 1: 1867.4 req/s, p95 6.34 ms, err 0.000
+[14:56:42]    run 2: 1934.6 req/s, p95 6.05 ms, err 0.000
+[14:57:22]    run 3: 2031.6 req/s, p95 5.74 ms, err 0.000
+[14:57:32] container-jammy 10 VUs /compute (warm-up)
+[14:58:13]    run 1: 234.5 req/s, p95 46.75 ms, err 0.000
+[14:58:54]    run 2: 240.0 req/s, p95 44.97 ms, err 0.000
+[14:59:34]    run 3: 236.9 req/s, p95 46.97 ms, err 0.000
+[14:59:45] microbench run 1: 0.0807 s
+[14:59:46] microbench run 2: 0.08 s
+[14:59:46] microbench run 3: 0.0769 s
+  -> results\control_startup.csv (5 rows)
+  -> results\control_memory.csv (4 rows)
+  -> results\control_throughput.csv (12 rows)
+  -> results\control_cpu_microbench.csv (3 rows)

@@ -1,0 +1,10 @@
+{
+  "date": "2026-11-22T13:59:28",
+  "host_os": "Windows-11-10.0.26300-SP0",
+  "host_cpu": "12th Gen Intel(R) Core(TM) i7-12700H",
+  "host_logical_cpus": 20,
+  "docker": "29.6.1",
+  "virtualbox": "7.2.22r175245",
+  "k6": "k6.exe v2.4.0 (commit/dd9395906d, go1.26.11, windows/amd64)",
+  "load": "50 VUs, 30s per run, 10 s warm-up"
+}

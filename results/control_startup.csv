@@ -1,0 +1,6 @@
+alternative,attempt,status,start_cmd_s,ready_s
+container-jammy,1,ok,0.361,0.391
+container-jammy,2,ok,0.343,0.347
+container-jammy,3,ok,0.383,0.401
+container-jammy,4,ok,0.362,0.366
+container-jammy,5,ok,0.356,0.382

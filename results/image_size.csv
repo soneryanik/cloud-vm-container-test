@@ -1,0 +1,5 @@
+alternative,artifact,size_mb
+container,Docker image sen421-api:1.0,46.9
+container,base image python:3.10-slim,43.0
+vm,"VM disk (vmdk, after setup)",2723.8
+vm,Ubuntu cloud image download (ova),665.7

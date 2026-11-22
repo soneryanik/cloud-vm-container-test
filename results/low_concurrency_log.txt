@@ -1,0 +1,17 @@
+﻿[14:33:48] 10 VUs: vm /hello (warm-up 10 s)
+[14:34:29]    run 1: 959.0 req/s, p95 16.47 ms, errors 0.000
+[14:35:09]    run 2: 970.5 req/s, p95 15.83 ms, errors 0.000
+[14:35:50]    run 3: 967.1 req/s, p95 16.1 ms, errors 0.000
+[14:36:00] 10 VUs: vm /compute (warm-up 10 s)
+[14:36:40]    run 1: 80.2 req/s, p95 140.72 ms, errors 0.000
+[14:37:21]    run 2: 79.9 req/s, p95 139.73 ms, errors 0.000
+[14:38:01]    run 3: 79.3 req/s, p95 144.85 ms, errors 0.000
+[14:38:19] 10 VUs: container /hello (warm-up 10 s)
+[14:39:00]    run 1: 1830.7 req/s, p95 6.25 ms, errors 0.000
+[14:39:40]    run 2: 1996.4 req/s, p95 5.65 ms, errors 0.000
+[14:40:21]    run 3: 1986.0 req/s, p95 5.7 ms, errors 0.000
+[14:40:31] 10 VUs: container /compute (warm-up 10 s)
+[14:41:12]    run 1: 204.3 req/s, p95 52.36 ms, errors 0.000
+[14:41:52]    run 2: 211.7 req/s, p95 50.76 ms, errors 0.000
+[14:42:32]    run 3: 209.0 req/s, p95 51.32 ms, errors 0.000
+  -> results\throughput_10vus.csv (12 rows)

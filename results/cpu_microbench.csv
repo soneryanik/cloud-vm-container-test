@@ -1,0 +1,7 @@
+alternative,run,seconds
+container,1,0.0854
+container,2,0.0836
+container,3,0.0848
+vm,1,0.4404
+vm,2,0.239
+vm,3,0.2139

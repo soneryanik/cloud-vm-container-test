@@ -1,0 +1,10 @@
+﻿[14:42:59] container run 1: 0.0854 s
+[14:42:59] container run 2: 0.0836 s
+[14:43:00] container run 3: 0.0848 s
+[14:43:00] 2) startup time: vm x1
+[14:45:13]    attempt 1: hang
+[14:45:47]    attempt 2: ok, ready after 29.38 s
+[14:46:19] vm run 1: 0.4404 s
+[14:46:20] vm run 2: 0.239 s
+[14:46:21] vm run 3: 0.2139 s
+  -> results\cpu_microbench.csv (6 rows)

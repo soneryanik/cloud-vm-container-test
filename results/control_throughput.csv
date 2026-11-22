@@ -1,0 +1,13 @@
+alternative,endpoint,run,rps,requests,lat_avg_ms,lat_med_ms,lat_p95_ms,lat_p99_ms,error_rate,vus
+container-jammy,/hello,1,1867.3,56050,24.83,23.6,37.93,59.13,0,50
+container-jammy,/hello,2,1937.5,58149,24.01,23.92,30.6,37.24,0,50
+container-jammy,/hello,3,2060.8,61865,22.63,22.04,31.45,38.96,0,50
+container-jammy,/compute,1,235.5,7112,210.89,210.23,222.1,232.76,0,50
+container-jammy,/compute,2,231.0,6978,214.95,211.86,237.8,283.63,0,50
+container-jammy,/compute,3,243.0,7338,204.42,204.11,223.32,229.15,0,50
+container-jammy,/hello,1,1867.4,56032,3.47,2.95,6.34,11.01,0,10
+container-jammy,/hello,2,1934.6,58076,3.48,3.23,6.05,9.01,0,10
+container-jammy,/hello,3,2031.6,60957,3.3,3.18,5.74,8.05,0,10
+container-jammy,/compute,1,234.5,7043,41.91,41.34,46.75,54.05,0,10
+container-jammy,/compute,2,240.0,7208,40.95,40.8,44.97,50.03,0,10
+container-jammy,/compute,3,236.9,7117,41.45,41.06,46.97,55.1,0,10

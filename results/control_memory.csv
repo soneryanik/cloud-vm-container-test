@@ -1,0 +1,5 @@
+alternative,phase,guest_or_cgroup_used_mb,app_rss_mb,host_ws_mb,host_private_mb,run
+container-jammy,idle,40.8,,,,1
+container-jammy,idle,40.8,,,,2
+container-jammy,idle,40.8,,,,3
+container-jammy,after load,46.6,,,,1

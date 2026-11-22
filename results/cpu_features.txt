@@ -1,0 +1,8 @@
+== container ==
+aes avx2 sha_ni 
+OpenSSL 3.5.7 9 Jun 2026
+model name	: 12th Gen Intel(R) Core(TM) i7-12700H
+== vm ==
+aes avx2 sha_ni 
+OpenSSL 3.0.2 15 Mar 2022
+model name	: 12th Gen Intel(R) Core(TM) i7-12700H

@@ -1,0 +1,43 @@
+#cloud-config
+# cloud-init configuration for the VirtualBox VM (alternative 1).
+# The SSH public key is injected by build_seed_iso.py; no password login.
+hostname: sen421-vm
+users:
+  - name: sen421
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    lock_passwd: true
+    ssh_authorized_keys:
+      - __SSH_PUBKEY__
+ssh_pwauth: false
+package_update: true
+packages:
+  - python3-venv
+  - python3-pip
+write_files:
+  - path: /opt/app/app.py
+    encoding: b64
+    content: __APP_PY_B64__
+  - path: /opt/app/requirements.txt
+    encoding: b64
+    content: __REQ_B64__
+  - path: /etc/systemd/system/sen421.service
+    content: |
+      [Unit]
+      Description=SEN421 benchmark API (gunicorn, 2 workers)
+      After=network-online.target
+      Wants=network-online.target
+
+      [Service]
+      WorkingDirectory=/opt/app
+      ExecStart=/opt/app/venv/bin/gunicorn --workers 2 --bind 0.0.0.0:8000 app:app
+      Restart=always
+      User=nobody
+
+      [Install]
+      WantedBy=multi-user.target
+runcmd:
+  - python3 -m venv /opt/app/venv
+  - /opt/app/venv/bin/pip install --no-cache-dir -r /opt/app/requirements.txt
+  - systemctl daemon-reload
+  - systemctl enable --now sen421.service
