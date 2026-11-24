@@ -150,7 +150,7 @@ Means are reported with the sample standard deviation ($\pm$). Cost was tracked 
 
 \subsection{Reproducibility}
 
-The repository listed in the Appendix contains the application, both Dockerfiles, the cloud-init template and VM creation script, the k6 test, all measurement scripts, every raw k6 summary and the CSV files behind each table and figure. The VM is reached with a locally generated SSH key that is not part of the repository; password login is disabled.
+The GitHub repository listed in the Appendix, and the identical ZIP file \texttt{SEN421\_B2305.010151\_Topic2\_code.zip} submitted together with this report, contain the application, both Dockerfiles, the cloud-init template and VM creation script, the k6 test, all measurement scripts, every raw k6 summary and the CSV files behind each table and figure. The VM is reached with a locally generated SSH key that is not part of the repository; password login is disabled.
 
 \section{Results}
 \label{sec:results}
@@ -351,7 +351,7 @@ AI-assisted tools (Claude, Anthropic, used through Claude Code) were used extens
 \section{Code Repository}
 \label{app:code}
 
-Application, configuration, scripts and raw results: \url{https://github.com/soneryanik/cloud-vm-container-test}. The load test is run with k6~\cite{k6}; the core of the startup measurement is:
+Application, configuration, scripts and raw results are available in two equivalent forms: the GitHub repository \url{https://github.com/soneryanik/cloud-vm-container-test}, and the ZIP file \texttt{SEN421\_B2305.010151\_Topic2\_code.zip}, which is submitted with this report and contains a snapshot of the same repository at submission time. The load test is run with k6~\cite{k6}; the core of the startup measurement is:
 
 \begin{lstlisting}[language=Python, caption={Startup time measurement (excerpt of run\_benchmarks.py)}, label={lst:startup}]
 t0 = time.perf_counter()

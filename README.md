@@ -2,6 +2,8 @@
 
 SEN421 Cloud Architecture and Services, Fall 2026, Part A (hands-on), Istanbul Aydın University.
 
+This repository is also submitted with the report as `SEN421_B2305.010151_Topic2_code.zip`, a snapshot of the repository at submission time.
+
 The same Flask API runs in isolated environments on one Windows laptop, with the same limits (2 vCPU, 2 GB RAM):
 
 | Alternative | Stack |

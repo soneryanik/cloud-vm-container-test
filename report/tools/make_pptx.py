@@ -384,7 +384,7 @@ bullets(s, 6.8, 1.6, 6.0, 4.8, [
     "Always test a hypothesis with a control experiment",
     "Next: repeat on Linux/KVM and in a cloud autoscaling group",
 ], 17, WHITE, gap=12)
-text(s, 0.6, 6.55, 12.1, 0.5, "Code and data: github.com/soneryanik/cloud-vm-container-test", 14,
+text(s, 0.6, 6.55, 12.1, 0.5, "Code and data: github.com/soneryanik/cloud-vm-container-test  and  SEN421_B2305.010151_Topic2_code.zip", 14,
      RGBColor(0xCA, 0xDC, 0xFC), align=PP_ALIGN.CENTER)
 footer(s, 8, dark=True)
 notes(s, "Tahminim ile gerçek sonuç: açılışta fark 10 değil 60 kat çıktı, bellekte 2 değil 5 ile 50 kat arası, "
