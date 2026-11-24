@@ -298,7 +298,7 @@ def table(doc, body, ctx):
     add_runs(p, [(f"TABLE {ctx.labels[lab]}", {})], 8)
     p2 = caption(doc, [(clean_text(cap_text).upper().replace("$\\PM$", "±"), {"smallcaps": False})], "table")
     p2.runs[0].text = p2.runs[0].text.replace("$\\PM$", "±")
-    tab = re.search(r"\\begin\{tabular\}\{.*?\}\s*(.*?)\\end\{tabular\}", body, re.S).group(1)
+    tab = re.search(r"\\begin\{tabular\}\{(?:[^{}]|\{[^{}]*\})*\}\s*(.*?)\\end\{tabular\}", body, re.S).group(1)
     rows = [r.strip() for r in re.split(r"\\\\", tab.replace("\\hline", "")) if r.strip()]
     cells = [[c.strip() for c in r.split("&")] for r in rows]
     ncol = max(len(r) for r in cells)

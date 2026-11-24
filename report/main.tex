@@ -82,8 +82,8 @@ Section~\ref{sec:related_work} reviews the background, Section~\ref{sec:design} 
 Fig.~\ref{fig:architecture} shows the setup. The application is a 60-line Flask API with three endpoints: \texttt{/health} (readiness probe), \texttt{/hello} (a small JSON reply that stresses per-request overhead) and \texttt{/compute} (20{,}000 SHA-256 rounds per request, a CPU-bound task). In both alternatives it is served by gunicorn with two worker processes. The load generator and the measurement script run on the Windows host and reach each alternative through a port forward bound to the loopback address.
 
 \begin{figure}[htbp]
-	\centerline{\includegraphics[width=\columnwidth]{figures/fig_architecture.pdf}}
-	\caption{Architecture of the experiment. Both alternatives ultimately run on the Hyper-V hypervisor: the VM through VirtualBox and the Windows Hypervisor Platform (NEM), the container inside the WSL2 utility VM.}
+	\centerline{\includegraphics[width=\columnwidth]{figures/fig_architecture_drawn.png}}
+	\caption{Architecture of the experiment (drawn by the author in draw.io). Both alternatives ultimately run on the Hyper-V hypervisor: the VM through VirtualBox and the Windows Hypervisor Platform (NEM), the container inside the WSL2 utility VM.}
 	\label{fig:architecture}
 \end{figure}
 
@@ -290,7 +290,7 @@ No cloud account was used, so no billable resources exist. The local VM, its dis
 % NOTE (Soner): You may edit this section. Keep it truthful: if you rewrite
 % parts yourself or take over tasks, lower the corresponding levels.
 
-AI-assisted tools (Claude, Anthropic, used through Claude Code) were used extensively in this project, as summarized in Table~\ref{tab:ai_use}. The topic choice, the motivation, the initial performance expectations and the personal information were provided by the student. The AI tool proposed the experimental design, wrote the application, Dockerfiles, VM configuration and measurement scripts, ran the experiments on the student's computer, produced the figures and drafted the report text and its interpretation, which the student reviewed. All numbers in this report come from measurements actually executed on the student's laptop on 22 November 2026; the raw outputs are in the repository. Prices were taken from the official Azure Retail Prices API and references were checked against the original sources. The student accepts full responsibility for the accuracy, originality, reproducibility and integrity of the submitted work.
+AI-assisted tools (Claude, Anthropic, used through Claude Code) were used extensively in this project, as summarized in Table~\ref{tab:ai_use}. The topic choice, the motivation, the initial performance expectations and the personal information were provided by the student, and the student drew the architecture diagram (Fig.~\ref{fig:architecture}) in draw.io. The AI tool proposed the experimental design, wrote the application, Dockerfiles, VM configuration and measurement scripts, ran the experiments on the student's computer, produced the figures and drafted the report text and its interpretation, which the student reviewed. All numbers in this report come from measurements actually executed on the student's laptop on 22 November 2026; the raw outputs are in the repository. Prices were taken from the official Azure Retail Prices API and references were checked against the original sources. The student accepts full responsibility for the accuracy, originality, reproducibility and integrity of the submitted work.
 
 \begin{table}[htbp]
 	\caption{AI Use Disclosure Summary}
@@ -305,7 +305,7 @@ AI-assisted tools (Claude, Anthropic, used through Claude Code) were used extens
 		\hline
 		Literature and documentation search & 4 & AI proposed sources and verified links; student reviewed \\
 		\hline
-		Design, deployment, and configuration & 5 & AI designed the setup and wrote code and configuration \\
+		Design, deployment, and configuration & 5 & AI designed the setup and wrote code and configuration; student drew the architecture diagram \\
 		\hline
 		Measurement, cost analysis, and modeling & 5 & AI wrote and ran the scripts on the student's machine and built the cost model \\
 		\hline

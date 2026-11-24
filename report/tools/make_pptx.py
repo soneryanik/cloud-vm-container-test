@@ -18,7 +18,7 @@ from pptx.oxml.ns import qn
 from pptx.util import Emu, Inches, Pt
 
 REPORT = pathlib.Path(__file__).resolve().parent.parent
-ARCH = REPORT.parent / "vm-vs-container" / "results" / "figures" / "fig_architecture.png"
+ARCH = REPORT / "figures" / "fig_architecture_drawn.png"  # drawn by the student in draw.io
 
 NAVY = RGBColor(0x1B, 0x26, 0x3B)
 CONT = RGBColor(0x2A, 0x78, 0xB5)
@@ -242,9 +242,10 @@ notes(s, "Bulutta her iş yükünün izole edilmesi gerekiyor. İki yol var: ken
 s = prs.slides.add_slide(BLANK)
 bg(s, WHITE)
 title(s, "Design")
-pic = s.shapes.add_picture(str(ARCH), Inches(0.5), Inches(1.45), width=Inches(8.1))
+pic = s.shapes.add_picture(str(ARCH), Inches(0.6), Inches(1.35), height=Inches(5.7))
 pic.name = "Architecture diagram"
-bullets(s, 8.9, 1.6, 4.0, 5.4, [
+text(s, 0.6, 7.05, 6.5, 0.35, "Diagram drawn by the author in draw.io", 11, MUTED)
+bullets(s, 7.5, 1.6, 5.3, 5.4, [
     [("Flask API", {"bold": True}), (" + gunicorn (2 workers): /hello, /compute, /health", {})],
     [("VM", {"bold": True, "color": VM}), (": VirtualBox 7.2, Ubuntu 22.04, kernel 5.15", {})],
     [("Container", {"bold": True, "color": CONT}), (": Docker 29.6, WSL2 kernel 6.18", {})],
